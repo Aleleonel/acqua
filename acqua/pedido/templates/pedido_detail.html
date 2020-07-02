@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="{% url 'pedido:pedido_list' %}">Voltar</a>
+    <h1>{{ object }}
+        <span class="pull-right">
+            <a href="{% url 'pedido:pedido_edit' object.pk %}">
+                <button type="button" class="btn btn-success">
+                    <span class="fa fa-pencil"></span> Editar
+                </button>
+            </a>
+        </span>
+    </h1>
+    <div class="col-sm-6">
+        <table class="table table-user-information">
+            <tbody>
+            <tr>
+                <th class="text-right">Status</th>
+                <td>{{ object.status }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Clientes</th>
+                <td>{{ object.cliente }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Endereço</th>
+                <td>{{ object.Endereco }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Preço</th>
+                <td>R$ {{ object.valor }}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

@@ -1,0 +1,84 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for message in messages %}
+  {% if 'success' in message.tags %}
+    <p class="alert alert-success" role="alert"><span style="font-weight: bold">{{ message }}</span></p>
+  {% else %}
+    <p class="alert alert-danger" role="alert"><span style="font-weight: bold">{{ message }}</span></p>
+  {% endif %}
+{% endfor %}
+
+   <div class="row">
+        <div class="col-sm-6">
+            <form action="." method="GET" class="form-inline">
+                <input type="text" id="search" name="search" class="form-control" placeholder="Busca">
+                <input type="submit" class="btn btn-primary" style="margin-left: 10px;" value="Localizar">
+            </form>
+        </div>
+   </div>
+
+
+    <div class="page-header">
+       <h2>Lista de Pedidos
+       <span class="pull-right">
+           <a href="{% url 'pedido:pedido_add' %}">
+               <button type="button" class="btn btn-primary">
+                   <span class="fa fa-plus"></span>Adicionar
+               </button>
+           </a>
+       </span>
+       </h2>
+
+        {% if object_list %}
+
+        <table class="table-striped">
+            <thead>
+            <tr>
+                <th>Status</th>
+                <th>Cliente</th>
+                <th>Endereço</th>
+                <th>Data do Pedido</th>
+                <th>Preço</th>
+                <th>Observações</th>
+
+            </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                <tr>
+
+                    <td>
+                        <a href="{{ object.get_absolute_url }}">{{ object.status }}</a>
+                    </td>
+                    <td>{{ object.cliente }}</td>
+                    <td>{{ object.endereco }}</td>
+                    <td>{{ object.data_pedido }}</td>
+                    <td>R$ <span class="pull-right">{{ object.valor }}</span></td>
+                    <td> <span class="pull-right">{{ object.observacoes }}</span></td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="alert alert-warning">Sem itens na lista.</p>
+        {% endif %}
+    </div>
+
+{% endblock content %}
+
+{% block js %}
+
+<script>
+  // Close alert after 2 seconds
+  window.setTimeout(function() {
+    $('.alert').fadeTo(500, 0).slideUp(500, function() {
+      $(this).remove();
+    });
+  }, 2000);
+</script>
+
+{% endblock js %}

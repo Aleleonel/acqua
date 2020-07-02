@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url 'fornecedor:fornecedor_list' %}">Voltar</a>
+    <h1>{{ object }}
+        <span class="pull-right">
+            <a href="{% url 'fornecedor:fornecedor_edit' object.pk %}">
+                <button type="button" class="btn btn-success">
+                    <span class="fa fa-pencil"></span> Editar
+                </button>
+            </a>
+        </span>
+    </h1>
+    <div class="col-sm-6">
+        <table class="table table-user-information">
+            <tbody>
+            <tr>
+                <th class="text-right">Fornecedor</th>
+                <td>{{ object.razao }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Fornecedor</th>
+                <td>{{ object.fantasia }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">CNPJ</th>
+                <td>{{ object.cnpj }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Inscrição</th>
+                <td>{{ object.insc_est }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Data Cadastro</th>
+                <td>{{ object.dt_cadastro }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">E-mail</th>
+                <td>{{ object.email }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Produto Tipo</th>
+                <td>{{ object.tipo }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Enderco</th>
+                <td>R$ {{ object.endereco }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Endereço</th>
+                <td>{{ object.endereco.numero }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Endereço</th>
+                <td>{{ object.endereco.cidade }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Endereço</th>
+                <td>{{ object.endereco.estado }}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

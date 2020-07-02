@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url 'cliente:cliente_list' %}">Voltar</a>
+    <h1>{{ object }}
+        <span class="pull-right">
+            <a href="{% url 'cliente:cliente_edit' object.pk %}">
+                <button type="button" class="btn btn-success">
+                    <span class="fa fa-pencil"></span> Editar
+                </button>
+            </a>
+        </span>
+    </h1>
+    <div class="col-sm-6">
+        <table class="table table-user-information">
+            <tbody>
+            <tr>
+                <th class="text-right">Cod.</th>
+                <td>{{ object.id }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Cliente</th>
+                <td>{{ object.nome }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Aniversário</th>
+                <td>{{ object.data_nascimento }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">E-mail</th>
+                <td>{{ object.email }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Profissão</th>
+                <td>{{ object.profissao }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Sexo</th>
+                <td>{{ object.sexo }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Endereço</th>
+                <td>{{ object.endereco }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Número</th>
+                <td>{{ object.endereco.numero }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Bairro</th>
+                <td>{{ object.endereco.bairro }}</td>
+            </tr>
+            <tr>
+                <th class="text-right">Cidade</th>
+                <td>{{ object.endereco.cidade }}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

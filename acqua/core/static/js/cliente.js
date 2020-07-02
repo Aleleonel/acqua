@@ -1,0 +1,1 @@
+ $('#id_nome').removeClass('form-control' );
